@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 
 namespace hw_51
-{
+{ //HW 51
     internal class Program
     {
         static void Main(string[] args)
