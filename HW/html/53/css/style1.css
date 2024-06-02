@@ -1,0 +1,23 @@
+html{
+text-align: center;
+}
+header {
+    
+    border: 15px rgb(35, 187, 35);
+    border-width: 10px;
+    border-style: inset;
+}
+a { 
+    color: #2fcc08;
+    padding-inline: 1em;
+}
+h2 { 
+    color: #145c02;
+}
+p { 
+color: #2fcc08;
+}
+h3
+{
+    
+}
