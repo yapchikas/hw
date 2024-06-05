@@ -1,0 +1,61 @@
+html{
+text-align: center;
+background-color: yellow;
+}
+header {
+    background-color: white;
+    border: 15px rgb(35, 187, 35);
+    border-radius: 8px;
+    border-width: 10px;
+    border-style: inset;
+    padding: auto;
+}
+header a { 
+    color: #2fcc08;
+    padding-inline: 1em;
+   
+}
+h2 { 
+    color: brown;
+}
+h3{
+    color: brown;
+}
+p { 
+color: brown;
+}
+
+.menu-item {
+    border:10px solid brown;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 4px 4px 1px 4px grey ;
+    margin-top: 20px;
+    color: red;
+    
+}
+a:hover
+{   
+    color: blue;
+}
+
+a:active{
+    color: blue;
+}
+
+a:focus {
+    color: blue;
+}
+.about{
+    border:10px solid brown;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    
+}
+.greeting{
+    border:10px solid brown;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 20px; 
+}
