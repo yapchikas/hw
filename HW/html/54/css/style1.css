@@ -1,6 +1,9 @@
 html{
 text-align: center;
 background-color: yellow;
+max-width: 960px;
+margin: auto;
+
 }
 header {
     background-color: white;
@@ -31,7 +34,7 @@ color: brown;
     border-radius: 8px;
     box-shadow: 4px 4px 1px 4px grey ;
     margin-top: 20px;
-    color: red;
+   
     
 }
 a:hover
@@ -52,10 +55,16 @@ a:focus {
     border-radius: 8px;
     margin-top: 20px;
     
+    
 }
-.greeting{
-    border:10px solid brown;
-    background-color: white;
+img{
+    border: 5px solid #555;
     border-radius: 8px;
-    margin-top: 20px; 
+}
+#img1 {
+    margin-top: 20px ;
+}    
+
+#img2 {
+    margin-top: 20px ;
 }
