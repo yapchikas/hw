@@ -1,4 +1,4 @@
 'use strict'
 
 let myName = "Avraham Katz";
-let email = "avrahamkatz41@gmail.com"
+let email = "avrahamkatz41@gmail.com";
