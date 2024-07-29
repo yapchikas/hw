@@ -1,11 +1,13 @@
-"use strict"
+"use strict";
+ 
 
-const dayOfWeekConverter = (function () {
 
-    const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thusrday","Friday","Shabbos"];
 
-   
-   
+ 
+ const dayOfWeekConverter = (function () {
+
+    const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thusrday","Friday","Shabbos"];   
+    
     function getDayOfWeek(number)
     {
     return daysOfWeek[number-1];
@@ -23,4 +25,23 @@ const dayOfWeekConverter = (function () {
    
     }
 
+}());
+
+(function calculator() {
+    let rate = 10;
+    let years = 30;
+
+    function calcInterest(principle) {
+        return principle * rate * years;
+    }
+
+    return {
+        setRate(r) {
+            rate = r;
+        },
+        setYears(y) {
+            years = y;
+        },
+        calcInterest
+    };
 }());
