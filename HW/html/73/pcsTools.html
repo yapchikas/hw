@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="joe">Joe</h1>
+    <script src="pcsTools.js"></script>
+    <script>
+      const joe = window.pcsTools.get('#joe');
+      window.pcsTools.setCss(joe, 'color', 'pink');
+      window.pcsTools.on(joe, 'click', () => console.log(`Joe was clicked, Joe is ${window.pcsTools.getCss(joe, 'background-color')}`));
+      window.pcsTools.hide(joe);
+      window.pcsTools.show(joe);
+      pcsTools.click(joe, () => console.log('joe was clicked'))
+    </script>
+  </body>
+</html>
