@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="donald">Donald Trump</h1>
+
+  <h1 id="kamala">Kamala Harris</h1>
+
+  <script src="pcsTools.js"></script>
+  <script>
+    const donald = pcs('#donald');
+    donald.css('color', 'green');
+    console.log(donald.css('color'));
+
+    donald.css('position', 'absolute');
+    donald.css('bottom', '100px');
+    // donald.click(() => {
+    //   console.log('donald was clicked!');
+    //   donald.css('bottom', 0);
+    // });
+
+    // setTimeout(() => {
+    //   donald.hide();
+    // }, 2000);
+
+    // setTimeout(() => {
+    //   donald.show();
+    // }, 4000);
+
+    //donald.on('mouseenter', () => console.log('mouse is on donald'));
+    //donald.on('mouseleave', () => console.log('mouse is no longer on donald'));
+
+   donald.colorSwap('5000', '500');
+    pcs('#kamala')
+      .css('font-family', 'cursive')
+      .css('font-size', '4em')
+      .on('mouseenter', () => console.log('mouse entered Kamala'))
+      .click(() => {
+        console.log('kamala was clicked');
+      });
+
+      pcs('h1').css('background-color', 'red');
+  </script>
+</body>
+</html>

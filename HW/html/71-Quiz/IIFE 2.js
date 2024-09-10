@@ -1,32 +1,27 @@
-
 window.app = window.app || {};
-app.createCounters = function () {
+window.app.createCounters = function () {
     let counters = 0;
     counters++;
 
-
-
     return {
-        
         createCounter: () => {
             let number = 0;
             function increment() {
-                ++number
-            };
+                ++number;
+            }
             function get() {
-                return number
+                return number;
             }
 
             return {
                 increment,
                 get
-            }
+            };
         },
         
         total: () => {
-            return counters
+            return counters;
         }
-
-    }
+    };
 }();
 
