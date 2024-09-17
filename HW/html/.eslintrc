@@ -1,6 +1,17 @@
 {
-    "parserOptions": {
-  // Required for certain syntax usages
-  "ecmaVersion": 2024
-    }
+  "extends" : "eslint:recommended",
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-var": "error",
+    "eqeqeq": "error",
+    "wrap-iife": "error"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  }
 }

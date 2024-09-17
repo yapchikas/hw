@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recipe Book</h1>
+    </header>
+
+    <main>
+        <section id="recipe-selection">
+            <label for="recipe-select">Choose a Recipe:</label>
+            <select id="recipe-select">
+                <option id="recipe-placeholder" disabled selected>Select a recipe:</option>
+            </select>
+        </section>
+
+        <section id="recipe-display">
+            <h2 id="recipe-name">Recipe Name</h2>
+            <img id="recipe-image" src="images/breakfast.jpeg" alt="Recipe Image">
+            <h3 id="ingredients-text">Ingredients</h3>
+            <ul id="recipe-ingredients">
+                
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Recipe Book</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="recipe.js"></script>
+</body>
+</html>
