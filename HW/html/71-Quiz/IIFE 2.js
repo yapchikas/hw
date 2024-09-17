@@ -1,6 +1,8 @@
 window.app = window.app || {};
 window.app.createCounters = function () {
     let counters = 0;
+
+    // SL - this is in wrong place, you need to increment once each time createCounter is called
     counters++;
 
     return {
@@ -18,10 +20,11 @@ window.app.createCounters = function () {
                 get
             };
         },
-        
+
         total: () => {
             return counters;
         }
     };
 }();
 
+// SL - nice!

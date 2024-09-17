@@ -6,9 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    
-    
+
+<!-- SL - I dont think Ive see script capitalized. Looks weird...-->
 <Script src="quiz.js"></Script>
 <Script src="IIFE 2.js"></Script>
+<script>
+  // SL - added the missing test code
+  for (let i = 0; i < 10; i++) {
+    window.app.counter.increment();
+  }
+
+  let counter1 = window.app.createCounters.createCounter();
+  let counter2 = window.app.createCounters.createCounter();
+
+  for (let i = 0; i < 5; i++) {
+    counter1.increment();
+  }
+
+  for (let i = 0; i < 15; i++) {
+    counter2.increment();
+  }
+
+  console.log(window.app.counter.get());
+  console.log(counter1.get());
+  console.log(counter2.get());
+
+  console.log(window.app.createCounters.total());
+</script>
 </body>
 </html>
