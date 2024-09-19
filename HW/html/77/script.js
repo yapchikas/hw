@@ -1,6 +1,6 @@
 /*global $*/
 async function loadVideos() {
-    const videoData = await fetch('data.json')
+    const videoData = await fetch('data.json');
     const videoArray = await videoData.json();
     videoArray.forEach(element => {
 
