@@ -1,0 +1,27 @@
+[
+    {
+        "first": "Mr",
+        "last": "Beast",
+        "profile": "images/mrBeast.jpeg",
+        "lastMessage": "I'll see you",
+        "lastMessageTime": "6:56 AM",
+        "status": "Online"
+    },
+    {
+        "first": "Dude",
+        "last": "Perfect",
+        "profile": "images/dudePerfect.jpeg",
+        "lastMessage": "what's his name?",
+        "lastMessageTime": "12:21 PM",
+        "status": "Online"
+    },
+    {
+        "first": "Fire",
+        "last": "Ship",
+        "profile": "images/fireship.jpeg",
+        "lastMessage": "I'm here",
+        "lastMessageTime": "9:33 AM",
+        "status": "Offline"
+    }
+
+]
