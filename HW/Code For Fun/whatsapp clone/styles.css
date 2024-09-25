@@ -103,6 +103,11 @@ body {
   margin-left: 22px;
   font-size: 18px;
 }
+#userDropdown{
+  color: white;
+  background-color: #009688;
+  border-radius: 10%;
+}
 
 .notif-box {
   position: relative;
@@ -323,6 +328,7 @@ img {
   height: calc(100% - 120px);  /*60+60*/
   padding: 50px;
   overflow-y: auto;
+  background-image: url(images/whatsapp-background.jpg) ;
 }
 
 .message-box {
@@ -420,4 +426,10 @@ img {
     font-size: 1em;
     border:none;
     outline:none;
+ }
+ #select-chat-msg{
+  text-align: center;
+  color: #dcf8c6;
+  background-color: #009688;
+  border-radius: 10px 10px 10px 10px;
  }

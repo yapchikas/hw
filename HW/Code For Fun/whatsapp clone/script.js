@@ -1,36 +1,133 @@
 /* use global $*/
-/*
-* @param {Array<Object>} messages - The array of message objects to sort.
-* Each object should have a 'lastMessageTime' property in the "H:MM AM/PM" or "HH:MM AM/PM" format.
-*
-* @returns {Array<Object>} - A new array of message objects sorted by proximity to the current time.
-*
-* @example
-* const messages = [
-*   { id: 1, content: "Hello!", lastMessageTime: "6:56 AM" },
-*   { id: 2, content: "How are you?", lastMessageTime: "12:30 PM" },
-*   // Additional message objects...
-* ];
-*
-* const sortedMessages = sortMessagesByProximity(messages);
-* console.log(sortedMessages);
-*/
+
+
+// function sortMessagesByProximity(messages) {
+//     /**
+//      * Parses a time string in "H:MM AM/PM" or "HH:MM AM/PM" format to a Date object representing today's date at that time.
+//      * @param {string} timeStr - The time string to parse.
+//      * @returns {Date|null} - A Date object representing the time today, or null if the input is invalid.
+//      */
+//     function parseTimeToDate(timeStr) {
+//         // Check if the input is a string
+//         if (typeof timeStr !== 'string') return null;
+
+//         // Trim whitespace and convert to uppercase to handle case-insensitive inputs (e.g., "am", "pm")
+//         const trimmedStr = timeStr.trim().toUpperCase();
+
+//         // Regular expression to match "H:MM AM/PM" or "HH:MM AM/PM"
+//         const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/;
+//         const match = trimmedStr.match(timeRegex);
+
+//         // If the time string doesn't match the expected format, return null
+//         if (!match) return null;
+
+//         // Destructure the matched groups: hours, minutes, and period (AM/PM)
+//         let [_, hoursStr, minutesStr, period] = match;
+//         let hours = parseInt(hoursStr, 10);
+//         const minutes = parseInt(minutesStr, 10);
+
+//         // Validate hours and minutes ranges
+//         if (
+//             isNaN(hours) || isNaN(minutes) ||
+//             hours < 1 || hours > 12 ||
+//             minutes < 0 || minutes > 59
+//         ) {
+//             return null;
+//         }
+
+//         // Convert to 24-hour format
+//         if (period === 'AM') {
+//             if (hours === 12) {
+//                 hours = 0; // Midnight
+//             }
+//         } else if (period === 'PM') {
+//             if (hours !== 12) {
+//                 hours += 12; // Afternoon/evening
+//             }
+//         }
+
+//         // Create a Date object for today with the parsed time
+//         const now = new Date();
+//         const messageDate = new Date(
+//             now.getFullYear(),
+//             now.getMonth(),
+//             now.getDate(),
+//             hours,
+//             minutes,
+//             0, // seconds
+//             0  // milliseconds
+//         );
+
+//         return messageDate;
+//     }
+
+//     // Capture the current time once to ensure consistency during sorting
+//     const now = new Date();
+
+//     /**
+//      * Calculate the absolute difference in milliseconds between two Date objects.
+//      * @param {Date} date1 - The first Date object.
+//      * @param {Date} date2 - The second Date object.
+//      * @returns {number} - The absolute difference in milliseconds.
+//      */
+//     function getTimeDifference(date1, date2) {
+//         return Math.abs(date1 - date2);
+//     }
+
+//     // Create a shallow copy of the messages array to avoid mutating the original array
+//     const messagesCopy = [...messages];
+
+//     // Sort the copied array based on the proximity of 'lastMessageTime' to the current time
+//     messagesCopy.sort((a, b) => {
+//         const timeA = parseTimeToDate(a.lastMessageTime);
+//         const timeB = parseTimeToDate(b.lastMessageTime);
+
+//         // Calculate the time differences
+//         const diffA = timeA ? getTimeDifference(timeA, now) : Infinity;
+//         const diffB = timeB ? getTimeDifference(timeB, now) : Infinity;
+
+//         // Compare the differences to determine sort order
+//         return diffA - diffB;
+//     });
+
+//     return messagesCopy;
+// }
+
 function sortMessagesByProximity(messages) {
     /**
-     * Parses a time string in "H:MM AM/PM" or "HH:MM AM/PM" format to a Date object representing today's date at that time.
-     * @param {string} timeStr - The time string to parse.
-     * @returns {Date|null} - A Date object representing the time today, or null if the input is invalid.
+     * Parses date and time strings into a Date object.
+     * @param {string} dateStr - The date string to parse (e.g., "9/23/2024").
+     * @param {string} timeStr - The time string to parse (e.g., "6:56 AM").
+     * @returns {Date|null} - A Date object representing the combined date and time, or null if invalid.
      */
-    function parseTimeToDate(timeStr) {
-        // Check if the input is a string
-        if (typeof timeStr !== 'string') return null;
+    function parseDateTimeToDate(dateStr, timeStr) {
+        // Check if the inputs are strings
+        if (typeof dateStr !== 'string' || typeof timeStr !== 'string') return null;
 
-        // Trim whitespace and convert to uppercase to handle case-insensitive inputs (e.g., "am", "pm")
-        const trimmedStr = timeStr.trim().toUpperCase();
+        // Trim whitespace
+        const trimmedDateStr = dateStr.trim();
+        const trimmedTimeStr = timeStr.trim().toUpperCase(); // Handle case-insensitive AM/PM
+
+        // Validate and parse the date string (Format: M/D/YYYY)
+        const dateParts = trimmedDateStr.split('/');
+        if (dateParts.length !== 3) return null;
+        const [monthStr, dayStr, yearStr] = dateParts;
+        const year = parseInt(yearStr, 10);
+        const month = parseInt(monthStr, 10) - 1; // JavaScript months are 0-based
+        const day = parseInt(dayStr, 10);
+
+        if (
+            isNaN(year) || isNaN(month) || isNaN(day) ||
+            year < 1000 || year > 9999 ||
+            month < 0 || month > 11 ||
+            day < 1 || day > 31
+        ) {
+            return null;
+        }
 
         // Regular expression to match "H:MM AM/PM" or "HH:MM AM/PM"
         const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/;
-        const match = trimmedStr.match(timeRegex);
+        const match = trimmedTimeStr.match(timeRegex);
 
         // If the time string doesn't match the expected format, return null
         if (!match) return null;
@@ -60,22 +157,18 @@ function sortMessagesByProximity(messages) {
             }
         }
 
-        // Create a Date object for today with the parsed time
-        const now = new Date();
-        const messageDate = new Date(
-            now.getFullYear(),
-            now.getMonth(),
-            now.getDate(),
-            hours,
-            minutes,
-            0, // seconds
-            0  // milliseconds
-        );
+        // Create a Date object with the parsed date and time
+        const messageDate = new Date(year, month, day, hours, minutes, 0, 0);
+
+        // Check if the date is valid
+        if (isNaN(messageDate.getTime())) {
+            return null;
+        }
 
         return messageDate;
     }
 
-    // Capture the current time once to ensure consistency during sorting
+    // Capture the current date and time once to ensure consistency during sorting
     const now = new Date();
 
     /**
@@ -91,14 +184,14 @@ function sortMessagesByProximity(messages) {
     // Create a shallow copy of the messages array to avoid mutating the original array
     const messagesCopy = [...messages];
 
-    // Sort the copied array based on the proximity of 'lastMessageTime' to the current time
+    // Sort the copied array based on the proximity of 'lastMessageDate' and 'lastMessageTime' to the current date and time
     messagesCopy.sort((a, b) => {
-        const timeA = parseTimeToDate(a.lastMessageTime);
-        const timeB = parseTimeToDate(b.lastMessageTime);
+        const dateTimeA = parseDateTimeToDate(a.lastMessageDate, a.lastMessageTime);
+        const dateTimeB = parseDateTimeToDate(b.lastMessageDate, b.lastMessageTime);
 
         // Calculate the time differences
-        const diffA = timeA ? getTimeDifference(timeA, now) : Infinity;
-        const diffB = timeB ? getTimeDifference(timeB, now) : Infinity;
+        const diffA = dateTimeA ? getTimeDifference(dateTimeA, now) : Infinity;
+        const diffB = dateTimeB ? getTimeDifference(dateTimeB, now) : Infinity;
 
         // Compare the differences to determine sort order
         return diffA - diffB;
@@ -106,7 +199,6 @@ function sortMessagesByProximity(messages) {
 
     return messagesCopy;
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////// MY CODE /////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +216,10 @@ let userDropDown = $('#userDropdown')
 let dropdown = false;
 userDropDown.hide();
 let currentUser = 'User';
+
+chatContainer.css('background-image', 'url()');
+chatContainer.css('background-color', '#e5ddd5')
+
 
 users.click(() => {
     userDropDown.toggle();  // Show or hide the dropdown on each click
@@ -147,7 +243,7 @@ userDropDown.change(function () {
 function exitNotifBox() {
     notification.hide();
 }
-function setChatColors(oldID) {
+function setChatColors() {
     if (chatID !== '') {
         let chatIDSelector = $(`#${chatID}`);
         chatIDSelector.css('background-color', '#dfe0dd');
@@ -156,12 +252,16 @@ function setChatColors(oldID) {
         }
     }
 }
-function openChat(e) {
+function prepareChat() {
     chatbox.show()
+    chatContainer.css('background-image', '');
+}
+function openChat(e) {
+    prepareChat()
     if (chatID !== `${e.first}-${e.last}`) {
         oldID = chatID;
         chatID = `${e.first}-${e.last}`;
-        setChatColors(oldID);
+        setChatColors();
         header.empty();
         header.append(`${e.first} ${e.last}<br><span>${e.status}</span>`);
         chatContainer.empty();
@@ -190,7 +290,15 @@ function getDate() {
     let time = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
     return time;
 }
+function todaysDate() {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // getMonth() returns 0-11
+    const day = String(today.getDate()).padStart(2, '0');
+    const year = today.getFullYear();
 
+    const formattedDate = `${month}/${day}/${year}`;
+    return formattedDate;
+}
 
 function addChat(message, time) {
     let hoursAndMinutes = time.slice(0, -6);
@@ -239,7 +347,8 @@ async function loadContacts() {
     let contacts = await contactsJSON.json();
     let sortedContacts = sortMessagesByProximity(contacts);
     sortedContacts.forEach(e => {
-        chatList.append(` <div class="chat-box" id="${e.first}-${e.last}" data-first-name="${e.first}" data-last-name="${e.last}">
+        if (e.lastMessageDate === todaysDate()) {
+            chatList.append(` <div class="chat-box" id="${e.first}-${e.last}" data-first-name="${e.first}" data-last-name="${e.last}">
           <div class="img-box">
             <img class="img-cover" src="${e.profile}" alt="">
           </div>
@@ -253,10 +362,29 @@ async function loadContacts() {
             </div>
           </div>
         </div>`);
+        }
+        else {
+            chatList.append(` <div class="chat-box" id="${e.first}-${e.last}" data-first-name="${e.first}" data-last-name="${e.last}">
+                <div class="img-box">
+                  <img class="img-cover" src="${e.profile}" alt="">
+                </div>
+                <div class="chat-details">
+                  <div class="text-head">
+                    <h4>${e.first} ${e.last}</h4>
+                    <p class="time">${e.lastMessageDate}</p>
+                  </div>
+                  <div class="text-message">
+                    <p>“${e.lastMessage}”</p>
+                  </div>
+                </div>
+              </div>`);
+        }
         $(`#${e.first}-${e.last}`).click(() => {
             openChat(e);
         });
-        messageArrays.push({ ID: `${e.first}-${e.last}`, userMessages: [], friendMessages: [] });
+        messageArrays.push({
+            ID: `${e.first}-${e.last}`, userMessages: [], friendMessages: []
+        });
     });
 
 }
