@@ -28,8 +28,10 @@ async function getSearchResults(input) {
 }
 
 searchButton.click(() => {
-    getSearchResults(`${searchBox.val()}`);
-    searchBox.val('');
+    if (searchBox.val() !== '') {
+        getSearchResults(`${searchBox.val()}`);
+        searchBox.val('');
+    }
 });
 
 async function displayMap(array) {
@@ -58,7 +60,7 @@ async function displayMap(array) {
 
         // Add an event listener to the marker to open the InfoWindow on click
         marker.addListener('click', () => {
-            if(map.zoom < 6){
+            if (map.zoom < 6) {
                 map.zoom = 6;
             }
             openCloseWindow(map, marker, infoWindow);
