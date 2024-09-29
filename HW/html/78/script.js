@@ -1,4 +1,15 @@
 /* global $*/
+(async function(){
+window.onload = function() {
+    Particles.init({
+      selector: '.background',
+      connectParticles: 'true',
+      color: '#66b2b4'
+    });
+  };
+  let position = { lat: 39.16704497476413, lng: -100.36819943947745 };
+ 
+
 const list = $('#results-list');
 const searchBox = $('#search-box');
 const searchButton = $('#search-btn');
@@ -39,8 +50,8 @@ async function displayMap(array) {
     const { Map } = await google.maps.importLibrary('maps');
     // eslint-disable-next-line no-undef
     const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
-    let position = { lat: 39.16704497476413, lng: -100.36819943947745 };
-
+    
+    const bounds = new google.maps.LatLngBounds();
     const map = new Map(document.getElementById('map'), {
         zoom: 4,
         center: position,
@@ -54,6 +65,7 @@ async function displayMap(array) {
             position: position,
             title: 'click to see info',
         });
+        bounds.extend(position);
         let infoWindow = new google.maps.InfoWindow({
             content: `<img src="${e.thumbnailImg}" alt="${e.title}"><h3>${e.title}</h3><p>${e.summary}</p><a href= "https://${e.wikipediaUrl}" target="_blank">Open Wiki</a>`,
         });
@@ -67,6 +79,7 @@ async function displayMap(array) {
 
         });
     });
+    map.fitBounds(bounds);
 }
 
 function openCloseWindow(map, marker, infoWindow) {
@@ -79,4 +92,4 @@ function openCloseWindow(map, marker, infoWindow) {
         currentInfoWindow?.close();
         currentInfoWindow = null;
     }
-}
+}}());
