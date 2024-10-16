@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MyTwitter Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">MyTwitter</div>
+
+            <div class="nav-bar">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">Notifications</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+                </nav>
+                <div class="user-settings">
+                    <img src="" id="userAvatar">
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="left-sidebar">
+            <div class="trends">
+                <h3>Trends for you</h3>
+                <ul>
+                    <li><a href="#">#OpenAI</a></li>
+                    <li><a href="#">#JavaScript</a></li>
+                    <li><a href="#">#WebDevelopment</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main>
+            <div class="new-tweet">
+                <textarea id="tweet-input" placeholder="What's happening?"></textarea>
+                <button id="tweet-button">Tweet</button>
+            </div>
+            <div class="tweets-wrapper">
+                <div id="feed">
+                    <!-- Sample posts will be injected here -->
+                </div>
+            </div>
+        </main>
+        <aside class="right-sidebar">
+            <div class="who-to-follow">
+                <h3>Who to follow</h3>
+                <ul>
+                    <!-- <li>
+                        <img src="user1-avatar.jpg" alt="User 1">
+                        <div>
+                            <h4>Jane Smith</h4>
+                            <p>@janesmith</p>
+                        </div>
+                        <button>Follow</button>
+                    </li>
+                    <li>
+                        <img src="user2-avatar.jpg" alt="User 2">
+                        <div>
+                            <h4>Mike Johnson</h4>
+                            <p>@mikejohnson</p>
+                        </div>
+                        <button>Follow</button>
+                    </li> -->
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="loadpage.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+{
+    "first": "Dude",
+    "last": "Perfect",
+    "handle": "dudeperfect",
+    "avatar": "images/dudePerfect.jpeg",
+    "tweets": [
+        {
+            "content": "Just landed the world's longest basketball shot! 🎯🏀",
+            "time": "8:25 AM",
+            "date": "06/11/2023",
+            "liked": "true",
+            "likes": "150000",
+            "retweeted": "true",
+            "retweets": "50000",
+            "replies": [
+                {
+                    "handle": "mrbeast6000",
+                    "content": "That's insane! Congrats guys!"
+                },
+                {
+                    "handle": "fan123",
+                    "content": "You guys never cease to amaze me!"
+                },
+                {
+                    "handle": "trickshotfan",
+                    "content": "This is why I love you guys!"
+                },
+                {
+                    "handle": "basketballlover",
+                    "content": "Unbelievable shot! 🏀"
+                },
+                {
+                    "handle": "skepticaluser",
+                    "content": "Did you use any editing tricks?"
+                }
+            ]
+        },
+        {
+            "content": "New video dropping tomorrow. You won't believe what happens! 😱",
+            "time": "3:03 PM",
+            "date": "12/30/2023",
+            "liked": "true",
+            "likes": "100000",
+            "retweeted": "false",
+            "retweets": "30000",
+            "replies": [
+                {
+                    "handle": "excitedfan",
+                    "content": "Can't wait!"
+                },
+                {
+                    "handle": "mrbeast6000",
+                    "content": "Looking forward to it!"
+                },
+                {
+                    "handle": "randomuser",
+                    "content": "I bet it's going to be epic!"
+                }
+            ]
+        },
+        {
+            "content": "What's your favorite trick shot we've ever done?",
+            "time": "4:08 PM",
+            "date": "01/01/2024",
+            "liked": "false",
+            "likes": "80000",
+            "retweeted": "false",
+            "retweets": "20000",
+            "replies": [
+                {
+                    "handle": "fan1",
+                    "content": "The one where you threw the football across the stadium!"
+                },
+                {
+                    "handle": "fan2",
+                    "content": "All of them are amazing!"
+                },
+                {
+                    "handle": "mrbeast6000",
+                    "content": "Hard to choose, but the airplane shot was crazy!"
+                },
+                {
+                    "handle": "critic",
+                    "content": "They all look fake to me."
+                }
+            ]
+        }
+    ],
+    "following": [
+        "mrbeast6000",
+        "fireship",
+        "nasa"
+    ],
+    "followers": [
+        "fan123",
+        "randomuser",
+        "mrbeast6000"
+    ],
+    "settings": {}
+}
