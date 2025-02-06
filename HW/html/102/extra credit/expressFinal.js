@@ -11,45 +11,21 @@ app.get('/', (req, res, next) => {
     res.end('Welcome To Home Page!');
 });
 
-// app.get('/add', (req, res) => {
-//     res.statusCode = req.output.statusCode;
-//     if (req.output.error === 'true') {
-//         res.end(req.output.errMsg);
-//     } else {
-//         res.end(`${req.output.print.add}`);
-//     }
-// });
-
-// app.get('/subtract', (req, res) => {
-//    res.statusCode = req.output.statusCode; 
-//    if (req.output.error === 'true') { 
-//         res.end(req.output.errMsg);
-//     } else {
-//         res.end(`${req.output.print.subtract}`);
-//     }
-// });
-
 app.get('/add', (req, res) => {
     res.statusCode = req.output.statusCode;
-    let a = Number(req.output.params.a)
-    let b = Number(req.output.params.b)
-    let sum = a+b;
     if (req.output.error === 'true') {
         res.end(req.output.errMsg);
     } else {
-        res.end(`${a} + ${b} = ${sum}`);
+        res.end(`${req.output.print.add}`);
     }
 });
 
 app.get('/subtract', (req, res) => {
-    res.statusCode = req.output.statusCode;
-    let a = Number(req.output.params.a)
-    let b = Number(req.output.params.b)
-    let sum = a-b;
-    if (req.output.error === 'true') {
+   res.statusCode = req.output.statusCode; 
+   if (req.output.error === 'true') { 
         res.end(req.output.errMsg);
     } else {
-        res.end(`${a} - ${b} = ${sum}`);
+        res.end(`${req.output.print.subtract}`);
     }
 });
 
