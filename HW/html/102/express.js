@@ -19,6 +19,7 @@ app.get('/add', (req, res) => {
         res.statusCode = 500;
         res.end('Please Enter Valid Values For \'a\' And \'b\'');
     } else {
+        res.statusCode = 200;
         res.end(`${a} + ${b} = ${Number(a) + Number(b)}`);
     }
 });
@@ -34,6 +35,7 @@ app.get('/subtract', (req, res) => {
         res.statusCode = 500;
         res.end('Please Enter Valid Values For \'a\' And \'b\'');
     } else {
+        res.statusCode = 200;
         res.end(`${a} - ${b} = ${Number(a) - Number(b)}`);
     }
 });

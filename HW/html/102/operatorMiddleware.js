@@ -6,6 +6,8 @@ export default (req, res, next) => {
 
     if (a == null || b == null || operator == null) {
         res.end('Missing Parameters');
+    } else if (a === '' || b === '' || operator === ''){
+        res.end('Missing Value(s)');
     } else if ((operator !== '+' && operator !== '-' && operator !== '*' && operator !== '/') || Number.isNaN(Number(a) + Number(b))) {
         res.end('Invalid Value(s)');
     } else {

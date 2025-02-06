@@ -1,9 +1,9 @@
 {
   "name": "102",
   "version": "1.0.0",
-  "main": "express.js",
+  "main": "./extra credit/expressFinal.js",
   "scripts": {
-    "start": "nodemon express.js"
+    "start": "nodemon expressFinal.js"
   },
   "keywords": [],
   "author": "",
