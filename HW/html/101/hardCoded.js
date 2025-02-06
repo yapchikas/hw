@@ -1,4 +1,3 @@
-//122112122122112112212
 const one = 1;
 const two = 2;
 const once = 1;

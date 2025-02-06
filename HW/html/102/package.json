@@ -1,0 +1,16 @@
+{
+  "name": "102",
+  "version": "1.0.0",
+  "main": "express.js",
+  "scripts": {
+    "start": "nodemon express.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
