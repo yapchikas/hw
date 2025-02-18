@@ -51,26 +51,22 @@ router.post('/addContact', (req, res, next) => {
   res.end();
 });
 
-router./*post*/get('/deleteContact/:id', (req, res, next) => {
+router.get('/deleteContact/:id', (req, res, next) => {
   contacts = contacts.filter(c => c.id !== Number(req.params.id));
 
-  res.writeHead(/*302*/301, {
-    location: '/'/*,
-    'cache-control': 'no-store'*/
+  res.writeHead(301, {
+    location: '/',
+
   });
   res.end();
 });
 
 router.get('/editContact/:id', (req, res, next) => {
-
-
   let c = contacts.filter(c => c.id === Number(req.params.id));
+  c = c[0];
   res.render('layout', {
     title: 'Edit Contact',
-    first: c[0].first,
-    last: c[0].last,
-    email: c[0].email,
-    phone: c[0].phone,
+    c,
     partials: {
       content: 'editContact'
     }
